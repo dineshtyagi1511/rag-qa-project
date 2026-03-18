@@ -40,7 +40,7 @@ COPY --from=builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Copy application code
-COPY app/ ./app/
+COPY . .
 
 # Set ownership to non-root user
 RUN chown -R appuser:appgroup /app
