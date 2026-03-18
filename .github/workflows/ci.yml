@@ -15,10 +15,10 @@ env:
 
 jobs:
   # ============================================
-  # Lint Check (Ruff only)
+  # Lint and Format Check
   # ============================================
   lint:
-    name: Lint
+    name: Lint & Format
     runs-on: ubuntu-latest
 
     steps:
@@ -41,10 +41,13 @@ jobs:
       - name: Install linting tools
         run: |
           python -m pip install --upgrade pip
-          pip install ruff
+          pip install ruff black
 
       - name: Run Ruff linter
         run: ruff check app/ tests/ --output-format=github
+
+      - name: Check code formatting with Black
+        run: black --check app/ tests/
 
   # ============================================
   # Unit Tests
