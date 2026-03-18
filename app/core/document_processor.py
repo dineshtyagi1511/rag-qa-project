@@ -18,6 +18,7 @@ from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
+
 class DocumentProcessor:
     """Process documents for RAG pipeline."""
 
