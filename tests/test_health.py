@@ -15,15 +15,12 @@ class TestHealthEndpoints:
         assert "version" in data
 
     def test_root_endpoint(self, client):
-        """Test root endpoint."""
         response = client.get("/")
 
         assert response.status_code == 200
-        data = response.json()
-        assert "message" in data
-        assert "version" in data
-        assert "docs" in data
+        assert "text/html" in response.headers["content-type"]
 
+    
     def test_readiness_check(self, client, mock_vector_store):
         """Test readiness check endpoint."""
         response = client.get("/health/ready")
